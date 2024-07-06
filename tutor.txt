@@ -1,0 +1,9 @@
+1. Install PostMan untuk test api
+2. Compress zip file yang ak kirim
+3. Rubah port dan database (jika beda) di file .env
+4. pastikan buat database dulu
+5. Jika sudah jalankan perintah "php artisan migrate" di terminal
+6. Jika sudah jalankan perintah "php artisan serve --port=8000" di terminal
+
+
+untuk file route ada di folder routes/api.php
