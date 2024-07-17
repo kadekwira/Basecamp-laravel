@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('transaksi_sewas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_customer');
-            $table->bigInteger('id_product');
-            $table->bigInteger('jumlah');
-            $table->double("harga_product");
+            $table->bigInteger('id_customer')->unsigned();
+            $table->bigInteger('id_order')->unsigned();
+            $table->double("total_sewa_awal");
             $table->double("harga_hilang")->nullable();
             $table->double("harga_telat")->nullable();
             $table->double("harga_rusak")->nullable();
@@ -26,6 +25,8 @@ return new class extends Migration
             $table->string('status');
             $table->string('status_payment');
             $table->timestamps();
+            $table->foreign('id_customer')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_order')->references('id')->on('orders')->onDelete('cascade');
         });
     }
 

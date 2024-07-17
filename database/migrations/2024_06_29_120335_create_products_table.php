@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("nama_product");
             $table->double("harga_product");
-            $table->double("harga_hilang")->nullable();
-            $table->double("harga_telat")->nullable();
-            $table->double("harga_rusak")->nullable();
+            $table->string("deskripsi");
             $table->string("status");
             $table->string("image");
             $table->bigInteger("stock");

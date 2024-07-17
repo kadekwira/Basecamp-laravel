@@ -40,23 +40,10 @@
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label>Harga Hilang</label>
-                  <input type="text" class="form-control" name="harga_hilang" id="harga_hilang" >
+                  <label>Deskripsi Product</label>
+                  <input type="text" class="form-control" name="deskripsi"  required>
                 </div>
               </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <label>Harga Telat</label>
-                  <input type="text" class="form-control" name="harga_telat"  id="harga_telat">
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <label>Harga Rusak</label>
-                  <input type="text" class="form-control" name="harga_rusak"  id="harga_rusak">
-                </div>
-              </div>
-
               <div class="col-4">
                 <div class="form-group">
                   <label>Stock</label>
@@ -161,61 +148,5 @@
       input.value = formattedValue;
   });
   </script>
-<script>
-  var input2 = document.getElementById('harga_hilang');
-  input2.addEventListener('keyup', function(e) {
-      var bilangan = e.target.value.replace(/[^,\d]/g, '').toString(),
-          split = bilangan.split(','),
-          sisa = split[0].length % 3,
-          rupiah = split[0].substr(0, sisa),
-          ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
-  
-      if (ribuan) {
-          separator = sisa ? '.' : '';
-          rupiah += separator + ribuan.join('.');
-      }
-  
-      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-      var formattedValue = 'Rp. ' + rupiah; // Menambahkan prefix "Rp." secara default
-      input2.value = formattedValue;
-  });
-  </script>
-<script>
-  var input3 = document.getElementById('harga_telat');
-  input3.addEventListener('keyup', function(e) {
-      var bilangan = e.target.value.replace(/[^,\d]/g, '').toString(),
-          split = bilangan.split(','),
-          sisa = split[0].length % 3,
-          rupiah = split[0].substr(0, sisa),
-          ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
-  
-      if (ribuan) {
-          separator = sisa ? '.' : '';
-          rupiah += separator + ribuan.join('.');
-      }
-  
-      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-      var formattedValue = 'Rp. ' + rupiah; // Menambahkan prefix "Rp." secara default
-      input3.value = formattedValue;
-  });
-  </script>
-<script>
-  var input4 = document.getElementById('harga_rusak');
-  input4.addEventListener('keyup', function(e) {
-      var bilangan = e.target.value.replace(/[^,\d]/g, '').toString(),
-          split = bilangan.split(','),
-          sisa = split[0].length % 3,
-          rupiah = split[0].substr(0, sisa),
-          ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
-  
-      if (ribuan) {
-          separator = sisa ? '.' : '';
-          rupiah += separator + ribuan.join('.');
-      }
-  
-      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-      var formattedValue = 'Rp. ' + rupiah; // Menambahkan prefix "Rp." secara default
-      input4.value = formattedValue;
-  });
-  </script>
+
 @endsection

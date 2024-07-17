@@ -3,7 +3,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Edit Data Pesanan</h1>
+      <h1>Form Pengembalian</h1>
     </div>
     <div class="row">
       <div class="col-12">
@@ -11,43 +11,68 @@
           <form method="post" action="{{ route('transaksi-sewa.kembali', $data->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
             <div class="card-header">
-              <h4>Edit Data Pesanan</h4>
+              <h4>Form Pengembalian</h4>
             </div>
             <div class="card-body row">
-              <div class="col-12">
-                <div class="form-group">
-                  <label>Barang yang dikembalikan</label>
-                  <input type="number" class="form-control" id="jumlah" name="jumlah" required >
+              <div class="col-md-12">
+                <div class="section-title">List Order</div>
+  
+                <div class="table-responsive">
+                  <table class="table table-striped table-hover">
+                    <tr>
+                      <th data-width="40">#</th>
+                      <th>Item</th>
+                      <th class="text-center">Jumlah</th>
+                      <th class="text-center">Jumlah Kembali</th>
+                      <th class="text-center">Harga Hilang</th>
+                      <th class="text-center">Harga Telat</th>
+                      <th class="text-center">Harga Rusak</th>
+                      <th class="text-right" data-width="150">Total</th>
+                    </tr>
+                    @php
+                        $no=1;
+                    @endphp
+                    @foreach ($orderDetail as $item)
+                      <tr class="row-form">
+                        <td>{{$no}}</td>
+                        <td>{{$item->product->nama_product}}</td>
+                        <td class="text-center">{{$item->quantity}}</td>
+                        <td class="text-center">
+                          <input type="hidden" class="form-control" id="product_id" name="product[{{$no-1}}][id]" value="{{ $item->product->id }}">
+                          <input type="number" class="form-control" id="jumlah" name="product[{{$no-1}}][jumlah]" required >
+                        </td>
+                        <td class="text-center">
+                          <input type="text" class="form-control harga_hilang" name="product[{{$no-1}}][harga_hilang]" value="@rupiah($data->harga_hilang)">
+                        </td>
+                        <td class="text-center">
+                          <input type="text" class="form-control harga_telat" name="product[{{$no-1}}][harga_telat]" value="@rupiah($data->harga_telat)" >
+                        </td>
+                        <td class="text-center">
+                          <input type="text" class="form-control harga_rusak" name="product[{{$no-1}}][harga_rusak]" value="@rupiah($data->harga_rusak)" >
+                        </td>
+                        <td class="text-right">
+                          <p class="total-price">Rp. 0</p>
+                          <input class="total-price1" type="hidden" name="product[{{$no-1}}][total]" ></input>
+                        </td>
+                      </tr>
+                      @php
+                        $no++;
+                      @endphp
+                    @endforeach
+                  </table>
                 </div>
-                <div class="form-group">
-                  <label>Total Penyewaan</label>
-                  <input type="text" class="form-control" id="total_sewa" name="total_sewa" value="@rupiah($data->total)" required readonly>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <label>Harga Hilang</label>
-                  <input type="text" class="form-control" id="harga_hilang" name="harga_hilang" value="@rupiah($data->harga_hilang)" >
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <label>Harga Telat</label>
-                  <input type="text" class="form-control" id="harga_telat" name="harga_telat" value="@rupiah($data->harga_telat)" >
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <label>Harga Rusak</label>
-                  <input type="text" class="form-control" id="harga_rusak" name="harga_rusak" value="@rupiah($data->harga_rusak)" >
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <label>Harga Total</label>
-                  <input type="text" class="form-control" id="total" name="total" value="@rupiah($data->total)" required readonly>
+                <div class="row mt-4">
+                    <hr class="mt-2 mb-2">
+                    <div class="form-group">
+                      <label>Total yang sudah di bayar</label>
+                      <input type="text" class="form-control" id="total_sewa" name="total_sewa" value="@rupiah($data->total)" required readonly>
+                    </div>
+                    <div class="form-group ml-2">
+                      <label>Sisa Bayar</label>
+                      <input type="text" class="form-control" id="sisa_bayar" name="sisa_bayar" required readonly value="@rupiah(0)">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -64,41 +89,53 @@
 
 @section('addJavascript')
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    function formatRupiah(value) {
-      let number_string = value.replace(/[^,\d]/g, '').toString(),
-        split = number_string.split(','),
-        sisa = split[0].length % 3,
-        rupiah = split[0].substr(0, sisa),
-        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+$(document).ready(function() {
+  function formatRupiah(angka, prefix) {
+    var numberString = angka.replace(/[^,\d]/g, '').toString(),
+      split = numberString.split(','),
+      sisa = split[0].length % 3,
+      rupiah = split[0].substr(0, sisa),
+      ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-      if (ribuan) {
-        let separator = sisa ? '.' : '';
-        rupiah += separator + ribuan.join('.');
-      }
-
-      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-      return 'Rp ' + rupiah;
+    if (ribuan) {
+      separator = sisa ? '.' : '';
+      rupiah += separator + ribuan.join('.');
     }
 
-    function calculateTotal() {
-      let totalSewa = parseInt(document.getElementById('total_sewa').value.replace(/[^,\d]/g, '')) || 0;
-      let hargaHilang = parseInt(document.getElementById('harga_hilang').value.replace(/[^,\d]/g, '')) || 0;
-      let hargaTelat = parseInt(document.getElementById('harga_telat').value.replace(/[^,\d]/g, '')) || 0;
-      let hargaRusak = parseInt(document.getElementById('harga_rusak').value.replace(/[^,\d]/g, '')) || 0;
-      let total = totalSewa + hargaHilang + hargaTelat + hargaRusak;
-      document.getElementById('total').value = formatRupiah(total.toString());
-    }
+    rupiah = split[1] !== undefined ? rupiah + ',' + split[1] : rupiah;
+    return prefix === undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+  }
 
-    document.querySelectorAll('#harga_hilang, #harga_telat, #harga_rusak').forEach(input => {
-      input.addEventListener('input', function(e) {
-        this.value = formatRupiah(this.value);
-        calculateTotal();
-      });
+  function formatInputRupiah(input) {
+    var value = input.val().replace(/\D/g, '');
+    input.val(formatRupiah(value, 'Rp. '));
+  }
+
+  function calculateTotalPrice() {
+    var totalSisaBayar = 0;
+
+    $('.row-form').each(function() {
+      var hargaHilang = parseInt($(this).find('.harga_hilang').val().replace(/\D/g, '') || 0);
+      var hargaTelat = parseInt($(this).find('.harga_telat').val().replace(/\D/g, '') || 0);
+      var hargaRusak = parseInt($(this).find('.harga_rusak').val().replace(/\D/g, '') || 0);
+
+      var totalKembali = hargaHilang + hargaTelat + hargaRusak;
+
+      $(this).find('.total-price').text(formatRupiah(totalKembali.toString(), 'Rp. '));
+      $(this).find('.total-price1').val(totalKembali);
+
+      totalSisaBayar += totalKembali;
     });
 
-    // Initialize the total calculation on page load
-    calculateTotal();
+    $('#sisa_bayar').val(formatRupiah(totalSisaBayar.toString(), 'Rp. '));
+  }
+
+  $(document).on('input', '.harga_hilang, .harga_telat, .harga_rusak', function() {
+    formatInputRupiah($(this));
+    calculateTotalPrice();
   });
+
+  calculateTotalPrice(); // Initial calculation on page load
+});
 </script>
 @endsection

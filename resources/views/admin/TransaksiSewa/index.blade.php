@@ -3,7 +3,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Data Pesanan</h1>
+      <h1>Data Transaksi Sewa</h1>
     </div>
     
     <div class="row">
@@ -16,9 +16,9 @@
                   <tr class="text-center">
                     <th>No</th>
                     <th>Customer</th>
-                    <th>Product</th>
-                    <th>Jumlah</th>
-                    <th>Harga Product</th>
+                    <th>ID Order</th>
+                    <th>Total Sementara</th>
+
                     <th>Harga Hilang</th>
                     <th>Harga Telat</th>
                     <th>Harga Rusak</th>
@@ -66,9 +66,8 @@
       columns: [
         { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, className: 'text-center' },
         { data: 'id_customer', name: 'id_customer', className: 'text-center' },
-        { data: 'id_product', name: 'id_product', className: 'text-center' },
-        { data: 'jumlah', name: 'jumlah', className: 'text-center' },
-        { data: 'harga_product', name: 'harga_product', className: 'text-center' , render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ')},
+        { data: 'id_order', name: 'id_order', className: 'text-center' },
+        { data: 'total_sewa_awal', name: 'total_sewa_awal', className: 'text-center' , render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ')},
         { data: 'harga_hilang', name: 'harga_hilang', className: 'text-center' , render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ')},
         { data: 'harga_telat', name: 'harga_telat', className: 'text-center' , render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ')},
         { data: 'harga_rusak', name: 'harga_rusak', className: 'text-center' , render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ')},

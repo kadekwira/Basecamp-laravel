@@ -19,8 +19,6 @@
                   <tr class="text-center">
                     <th>No</th>
                     <th>Customer</th>
-                    <th>Product</th>
-                    <th>Jumlah</th>
                     <th>Tanggal Pesanan</th>
                     <th>Tanggal Kembali</th>
                     <th>Total</th>
@@ -33,6 +31,7 @@
                 </tbody>
               </table>
             </div>
+
           </div>
         </div>
       </div>
@@ -65,11 +64,9 @@
       columns: [
         { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false ,className: 'text-center'},
         { data: 'id_customer', name: 'id_customer' ,className: 'text-center'},
-        { data: 'id_product', name: 'id_product' ,className: 'text-center'},
-        { data: 'jumlah', name: 'jumlah' ,className: 'text-center'},
         { data: 'tgl_pesanan', name: 'tgl_pesanan',className: 'text-center' },
         { data: 'tgl_kembali', name: 'tgl_kembali',className: 'text-center' },
-        { data: 'total', name: 'total',className: 'text-center' },
+        { data: 'total', name: 'total',className: 'text-center' ,render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ')},
         { data: 'note', name: 'note',className: 'text-center' },
         { data: 'status', name: 'status',className: 'text-center'},
         { data: 'action', name: 'action', orderable: false, searchable: false ,className: 'text-center'},
@@ -77,4 +74,6 @@
     });
   });
 </script>
+
+
 @endsection

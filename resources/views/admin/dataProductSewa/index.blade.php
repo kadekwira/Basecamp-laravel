@@ -21,9 +21,7 @@
                     <th>Gambar Product</th>
                     <th>Stock</th>
                     <th>Harga Product</th>
-                    <th>Harga Hilang</th>
-                    <th>Harga Rusak</th>
-                    <th>Harga Telat</th>
+                    <th>Deskripsi</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
@@ -66,10 +64,9 @@
         { data: 'nama_product', name: 'nama_product',className: 'text-center' },
         { data: 'image', name: 'image',className: 'text-center' },
         { data: 'stock', name: 'stock' ,className: 'text-center'},
+      
         { data: 'harga_product', name: 'harga_product', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ') ,className: 'text-center'},
-        { data: 'harga_hilang', name: 'harga_hilang', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ') ,className: 'text-center'},
-        { data: 'harga_rusak', name: 'harga_rusak', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ') ,className: 'text-center'},
-        { data: 'harga_telat', name: 'harga_telat', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ') ,className: 'text-center'},
+        { data: 'deskripsi', name: 'deskripsi' ,className: 'text-center'},
         { data: 'status', name: 'status',className: 'text-center'},
         { data: 'action', name: 'action', orderable: false, searchable: false,className: 'text-center' },
       ]

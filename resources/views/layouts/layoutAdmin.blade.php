@@ -57,18 +57,31 @@
                 <ul class="navbar-nav navbar-right ml-auto">
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="/newAdmin/dist/assets/img/avatar/avatar-1.png"
+                            <img alt="image" src="/newAdmin/dist/assets/img/avatar/avatar-4.png"
                                 class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">Hi, {{auth()->user()->name}}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <div class="dropdown-divider"></div>
-                            <form id="logout-form"action="{{ route('admin.logout') }}" method="POST" style="display: flex; align-items:center;">
-                                @csrf
-                                <button type="submit" class="dropdown-item has-icon text-danger" style="border: none; background: none; padding: 0; cursor: pointer; margin-left:10px;">
-                                    <i class="fas fa-sign-out-alt"></i> Logout
-                                </button>
-                            </form>
+                            <a href="{{route('dashboard.index')}}" class="dropdown-item has-icon">
+                                <i class="fa-solid fa-shop"></i>Penyewaan
+                            </a>
+                            <a href="{{route('dashboard-jual.index')}}" class="dropdown-item has-icon">
+                                <i class="fa-solid fa-shop"></i> Penjualan
+                            </a>
+                            <a href="{{route('konten.index')}}" class="dropdown-item has-icon">
+                                <i class="fa-solid fa-shop"></i> Pemasaran
+                            </a>
+                            <div class="dropdown-divider">
+                            </div>
+                            <div class="dropdown-item has-icon">
+                                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: flex; align-items: center;">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item has-icon text-danger" style="border: none; background: none; padding: 0; display: flex; align-items: center; cursor: pointer;">
+                                        <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i> Logout
+                                    </button>
+                                </form>
+                            </div>
+                            
                         </div>
                     </li>
                 </ul>
@@ -76,9 +89,15 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="index.html"> Basecamp</a>
+
+                        <img src="{{ asset('image/logo.png') }}" class="my-3 w-50">
                     </div>
-                    <ul class="sidebar-menu">
+                    @php
+                        $currentUrlPath = request()->path();
+                        $prefix = explode('/', $currentUrlPath)[0];
+                    @endphp
+                    @if ($prefix =='admin-sewa')
+                    <ul class="sidebar-menu mt-5">
                         {{-- Dashboard --}}
                         <li class="menu-header">Dashboard</li>
                         <li>
@@ -87,11 +106,6 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        {{-- End Dashboard --}}
-                        
-
-
-                                                    {{-- Data Master --}}
                         <li class="menu-header">Data Master</li>
                         <li class="dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i>
@@ -141,9 +155,95 @@
                                     Laporan Penyewaan
                                   </a>
                                 </li>    
+                                <li class="margin-left-neg">
+                                  <a class="nav-link" href="{{route('pengeluaran.index')}}"> 
+                                    Pengeluaran
+                                  </a>
+                                </li>    
                             </ul>
                         </li>
                     </ul>
+                    @elseif ($prefix == 'admin-pemasaran')
+                    <ul class="sidebar-menu mt-5">         
+                        <!-- Start Features -->
+                        <li class="menu-header">Features</li>
+                        <li>
+                            <a class="nav-link" href="{{route('konten.index')}}">
+                                <i class="fa-solid fa-boxes-packing"></i>
+                                <span>Konten & Jadwal</span>
+                            </a>
+                        </li>
+                    </ul>
+                    @else
+                    <ul class="sidebar-menu mt-5">
+                        {{-- Dashboard --}}
+                        <li class="menu-header">Dashboard</li>
+                        <li>
+                            <a class="nav-link" href="{{route('dashboard-jual.index')}}">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="menu-header">Data Master</li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i>
+                                <span>Data Master</span></a>
+                            <ul class="dropdown-menu">
+                                <li class="margin-left-neg">
+                                  <a class="nav-link" href="{{route('customers-jual.index')}}"> 
+                                    <i class="fa-solid fa-users"></i>Data Pelanggan
+                                  </a>
+                                </li>
+                                <li class="margin-left-neg">
+                                  <a class="nav-link" href="{{route('product-jual.index')}}"> 
+                                    <i class="fa-solid fa-boxes-stacked"></i>Data Product Jual
+                                  </a>
+                                </li>
+                                <li class="margin-left-neg">
+                                  <a class="nav-link" href="{{route('data-admin-jual.index')}}"> 
+                                    <i class="fa-solid fa-user-shield"></i>Data Admin
+                                  </a>
+                                </li>
+        
+    
+                            </ul>
+                        </li>
+                        {{-- end Data Master --}}
+         
+                        <!-- Start Features -->
+                        <li class="menu-header">Features</li>
+                        <li>
+                            <a class="nav-link" href="{{route('order-jual.index')}}">
+                                <i class="fa-solid fa-boxes-packing"></i>
+                                <span>Pesanan Jual</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{route('transaksi-jual.index')}}">
+                                <i class="fa-solid fa-money-bill-transfer"></i>
+                                <span>Transaksi Jual</span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown"><i class="fa-solid fa-money-bill-trend-up"></i>
+                                <span>Keuangan</span></a>
+                            <ul class="dropdown-menu">
+                                <li class="margin-left-neg">
+                                  <a class="nav-link" href="{{route('transaksi-jual.reportJual')}}"> 
+                                    Laporan Penyewaan
+                                  </a>
+                                </li>    
+                                <li class="margin-left-neg">
+                                  <a class="nav-link" href="{{route('pengeluaran-jual.index')}}"> 
+                                    Pengeluaran
+                                  </a>
+                                </li>    
+                            </ul>
+                        </li>
+                    </ul>
+                    @endif
+
+                    
                 </aside>
             </div>
 

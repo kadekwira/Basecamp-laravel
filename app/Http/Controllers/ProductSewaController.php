@@ -26,15 +26,6 @@ class ProductSewaController extends Controller
                     }
     
                 })
-                ->editColumn('harga_hilang', function($row) {
-                    return $row->harga_hilang ?? 0;
-                })
-                ->editColumn('harga_telat', function($row) {
-                    return $row->harga_telat ?? 0;
-                })
-                ->editColumn('harga_rusak', function($row) {
-                    return $row->harga_rusak ?? 0;
-                })
                 ->editColumn('status', function($row) {
                     $badgeClasses = [
                         'active' => 'badge-success',
@@ -66,12 +57,11 @@ class ProductSewaController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'nama_product' => 'required|string|max:255',
             'harga_product' => 'required',
-            'harga_hilang' => 'nullable',
-            'harga_telat' => 'nullable',
-            'harga_rusak' => 'nullable',
+            'deskripsi' => 'required',
             'status' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'stock' => 'required|integer',
@@ -79,9 +69,6 @@ class ProductSewaController extends Controller
 
         $validatedData['type'] = "sewa";
         $validatedData['harga_product'] =   convertToDouble($request->input('harga_product'));
-        $validatedData['harga_hilang'] =   convertToDouble($request->input('harga_hilang'));
-        $validatedData['harga_telat'] =   convertToDouble($request->input('harga_telat'));
-        $validatedData['harga_rusak'] =   convertToDouble($request->input('harga_rusak'));
     
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('product-sewa', 'public');
@@ -98,13 +85,6 @@ class ProductSewaController extends Controller
      */
     public function show(string $id)
     {
-        $product = Product::where('type', 'sewa')->find($id);
-        
-        if (!$product) {
-            return response()->json(['message' => 'Product not found'], 404);
-        }
-
-        return response()->json($product);
     }
 
     /**
@@ -130,9 +110,7 @@ class ProductSewaController extends Controller
     $validatedData = $request->validate([
         'nama_product' => 'sometimes|required|string|max:255',
         'harga_product' => 'required',
-        'harga_hilang' => 'nullable',
-        'harga_telat' => 'nullable',
-        'harga_rusak' => 'nullable',
+        'deskripsi' => 'required',
         'status' => 'sometimes|required|string|max:255',
         'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
         'stock' => 'sometimes|required|integer',
@@ -140,9 +118,6 @@ class ProductSewaController extends Controller
 
     $validatedData['type'] = "sewa";
     $validatedData['harga_product'] =   convertToDouble($request->input('harga_product'));
-    $validatedData['harga_hilang'] =   convertToDouble($request->input('harga_hilang'));
-    $validatedData['harga_telat'] =   convertToDouble($request->input('harga_telat'));
-    $validatedData['harga_rusak'] =   convertToDouble($request->input('harga_rusak'));
     if ($request->hasFile('image')) {
         // Hapus gambar lama jika ada
         if ($product->image) {
@@ -166,4 +141,14 @@ class ProductSewaController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+
+        $query = $request->input('query');
+        $products = Product::where('nama_product', 'LIKE', "%{$query}%")->where('type','sewa')->get();
+
+        return response()->json($products);
+    }
+
 }

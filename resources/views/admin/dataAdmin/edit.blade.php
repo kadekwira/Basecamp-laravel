@@ -49,7 +49,7 @@
               <div class="col-8">
                 <div class="form-group">
                   <label>Address</label>
-                  <input type="text" class="form-control" name="phone" required value="{{$data->address}}">
+                  <input type="text" class="form-control" name="address" required value="{{$data->address}}">
                 </div> 
               </div>
               <div class="col-12">

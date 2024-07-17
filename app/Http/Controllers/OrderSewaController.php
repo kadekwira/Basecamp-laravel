@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Models\TransaksiSewa;
 use Yajra\DataTables\DataTables;
@@ -20,9 +21,6 @@ class OrderSewaController extends Controller
                 ->editColumn('id_customer', function($row) {
                     return $row->customer ? $row->customer->name : 'N/A';
                 })
-                ->editColumn('id_product', function($row) {
-                    return $row->product ? $row->product->nama_product : 'N/A';
-                })
                 ->editColumn('status', function($row) {
                     $badgeClasses = [
                         'terima' => 'badge-success',
@@ -34,22 +32,11 @@ class OrderSewaController extends Controller
                 })
                 ->addColumn('action', function($row) {
                     if ($row->status === 'pending') {
-                        $edit = '<a href="' . route('order-sewa.edit', $row->id) . '" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>';
-                        $accButton = '<form action="' . route('order-sewa.acc', $row->id) . '" method="POST" style="display: inline;">
-                                        ' . csrf_field() . '
-                                        <input type="hidden" name="_method" value="PUT">
-                                        <button type="submit" class="btn btn-icon btn-success"><i class="far fa-check-circle"></i></button>
-                                    </form>';
-                
-                        $rejectButton = '<form action="' . route('order-sewa.tolak', $row->id) . '" method="POST" style="display: inline;">
-                                            ' . csrf_field() . '
-                                            <input type="hidden" name="_method" value="PUT">
-                                            <button type="submit" class="btn btn-icon btn-danger"><i class="far fa-times-circle"></i></button>
-                                        </form>';
-                
-                        return $edit . ' ' . $accButton . ' ' . $rejectButton;
-                    } else {
-    
+                        $detail = '<a href="' . route('order-sewa.detail', $row->id) . '" class="btn btn-icon btn-info"><i class="fa-solid fa-info"></i></a>';            
+                        return $detail;
+                    } else if($row->status === 'tolak'){
+                        $wa = '<a target="_blank" href="https://wa.me/'.$row->customer->phone.'?text=Hai" class="btn btn-icon btn-success"><i class="fa-brands fa-whatsapp" ></i></a>';            
+                        return $wa;
                     }
                 })
                 ->rawColumns(['status', 'action','id_customer','id_product'])
@@ -62,38 +49,58 @@ class OrderSewaController extends Controller
     public function create(){
         $customers =  User::where('role','customer')->select('id','name')->get();
         $products =  Product::where('status','active')->where('type','sewa')->get();
-        return view('admin.orderSewa.create',compact('customers','products'));
+        return view('admin.orderSewa.create',compact('customers','products')); 
     }
 
-    public function post(Request $request){
+    public function post(Request $request)
+    {
+        // Validate the request data
         $validatedData = $request->validate([
             'id_customer' => 'required|integer|exists:users,id',
-            'id_product' => 'required|integer|exists:products,id',
-            'jumlah' => 'required|integer|min:1',
             'tgl_pesanan' => 'required|date',
             'tgl_kembali' => 'required|date|after_or_equal:tgl_pesanan',
-            
             'note' => 'nullable|string',
+            'products' => 'required|array',
+            'products.*.id_product' => 'required|integer|exists:products,id',
+            'products.*.jumlah' => 'required|integer|min:1',
+            'total'=>'required'
         ]);
-        $product = Product::where('type', 'sewa')->find($request->id_product);
-        if($product){
-            if($product->stock > $request->jumlah){
-                $sisa = $product->stock - $request->jumlah;
-                $validatedData['status'] = 'pending';
-                $validatedData['total'] =   convertToDouble($request->input('total'));
-                
-                $order = Order::create($validatedData);
-                $product->update([
-                    'stock' =>$sisa,
+        
+        $validatedData['total'] =   convertToDouble($request->input('total'));
+
+        // Create the main order
+        $order = Order::create([
+            'id_customer' => $request->id_customer,
+            'tgl_pesanan' => $request->tgl_pesanan,
+            'tgl_kembali' => $request->tgl_kembali,
+            'note' => $request->note,
+            'status' => 'pending',
+            'total' => $validatedData['total'],
+        ]);
+    
+        foreach ($request->products as $productData) {
+            $product = Product::find($productData['id_product']);
+            if ($product->stock >= $productData['jumlah']) {
+                OrderDetail::create([
+                    'order_id' => $order->id,
+                    'product_id' => $productData['id_product'],
+                    'quantity' => $productData['jumlah'],
+                    'price' =>convertToDouble($productData['total'])
                 ]);
-                return redirect()->route('order-sewa.index')->with('success', 'Order Sewa berhasil dibuat.');
-            }else{
-                return redirect()->route('order-sewa.index')->with('error', 'Jumlah Sewa Melebihi Stock Yang Ada');
+    
+                $product->update([
+                    'stock' => $product->stock - $productData['jumlah'],
+                ]);
+            } else {
+                // Rollback
+                $order->delete();
+                return redirect()->route('order-sewa.index')->with('error', 'Jumlah Sewa Melebihi Stock Yang Ada untuk product ' . $product->nama_product);
             }
         }
-
-
+  
+        return redirect()->route('order-sewa.index')->with('success', 'Order Sewa berhasil dibuat.');
     }
+    
 
 
     public function edit(string $id)
@@ -124,9 +131,9 @@ class OrderSewaController extends Controller
         $order = Order::find($id);
         TransaksiSewa::create([
             'id_customer' => $order->id_customer,
-            'id_product'=> $order->id_product,
+            'id_order'=> $order->id,
             'jumlah' => $order->jumlah,
-            'harga_product' => $order->product->harga_product,
+            'total_sewa_awal' => $order->total,
             'harga_hilang'=>0,
             'harga_telat'=>0,
             'harga_rusak'=>0,
@@ -143,14 +150,26 @@ class OrderSewaController extends Controller
     }
     public function tolak(Request $request,string $id ){
         $order = Order::find($id);
-        $product = Product::where('type', 'sewa')->find($order->id_product);
-        $sisa = $order->jumlah + $product->stock;
-        $product->update([
-            "stock"=>$sisa
-        ]);
+        $orderDetail = OrderDetail::where('order_id',$id)->get();
+        foreach($orderDetail as $data){
+            $product = Product::where('type', 'sewa')->find($data->product_id);
+            $sisa = $data->quantity + $product->stock;
+            $product->update([
+                "stock"=>$sisa
+            ]);
+
+        }
         $order->update([
             "status"=>"tolak",
         ]);
         return redirect()->route('order-sewa.index')->with('success', 'Order Sewa berhasil ditolak.');
+    }
+
+    public function detail(Request $request,string $id){
+        $orderDetail = OrderDetail::where('order_id',$id)->get();
+        $dataOrderAndCustomer = Order::with('customer')->find($id);
+        $dateString = $dataOrderAndCustomer->created_at;
+        $newDate = date("F d, Y", strtotime($dateString));
+       return view('admin.orderSewa.detail',compact('orderDetail','id','dataOrderAndCustomer','newDate'));
     }
 }

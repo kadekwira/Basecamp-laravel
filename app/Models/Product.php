@@ -14,13 +14,11 @@ class Product extends Model
     protected $fillable = [
         'nama_product',
         'harga_product',
-        'harga_hilang',
-        'harga_telat',
-        'harga_rusak',
         'status',
         'image',
         'stock',
-        'type'
+        'type',
+        'deskripsi'
     ];
 
     public function orders()

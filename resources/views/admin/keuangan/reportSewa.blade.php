@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-12">
         <div class="card">
-          <form method="post" action="{{ route('transaksi-sewa.reportSewaCetak') }}" >
+          <form method="post" action="{{ route('transaksi-sewa.reportSewaShow') }}" >
             @csrf
             <div class="card-header">
               <h4>Laporan Penyewaan</h4>

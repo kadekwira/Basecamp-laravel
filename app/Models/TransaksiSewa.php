@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,9 +13,8 @@ class TransaksiSewa extends Model
     use HasFactory;
     protected $fillable = [
         'id_customer',
-        'id_product',
-        'jumlah',
-        'harga_product',
+        'id_order',
+        'total_sewa_awal',
         'harga_hilang',
         'harga_telat',
         'harga_rusak',
@@ -30,8 +30,8 @@ class TransaksiSewa extends Model
         return $this->belongsTo(User::class, 'id_customer');
     }
 
-    public function product()
+    public function order()
     {
-        return $this->belongsTo(Product::class, 'id_product');
+        return $this->belongsTo(Order::class, 'id_order');
     }
 }

@@ -73,6 +73,7 @@ class CustomerController extends Controller
         ]);
 
         if ($validator->fails()) {
+           
             return redirect()->route('customers.index')->with('error', $validator->errors());
         }
 
