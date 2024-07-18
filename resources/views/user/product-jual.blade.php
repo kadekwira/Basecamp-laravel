@@ -1,7 +1,7 @@
 @extends('layouts.layoutUser')
 
 @section('content')
-<div class="container-fluid" id="background-product-sewa">
+<div class="container-fluid" id="background-product-jual">
   <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
     <h1 class="text-white fw-bold backdrop-title text-center"> <span class="text-primary">OUR</span> PRODUCTS</h1>
   </div>

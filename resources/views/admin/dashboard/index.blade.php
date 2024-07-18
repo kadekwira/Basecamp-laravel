@@ -217,7 +217,7 @@
                   },
                   ticks: {
                       beginAtZero: true,
-                      stepSize: 200000,
+                      stepSize: 2000000,
                       callback: function(value) {
                           return formatRupiah(value, 'Rp');
                       }

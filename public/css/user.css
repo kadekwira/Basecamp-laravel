@@ -4,15 +4,21 @@
   background-image: url('../image/user/backdrop.jpg'); 
   background-size: cover;
   background-position: center;
-  height:80vh;
+  height:100vh;
 }
 #background-product-sewa{
   background-image: url('../image/user/background2.jfif'); 
   background-size: cover;
   background-position: center;
-  height:80vh;
+  height:100vh;
 }
+#background-product-jual{
+  background-image: url('../image/user/backdrop3.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height:100vh;
 
+}
 #login{
   background-image: url('../image/user/login.jfif'); 
   background-size: cover;
@@ -21,7 +27,14 @@
 }
 
 .backdrop-title{
-  font-size:60px;
+  font-size:120px;
+}
+.backdrop-title1{
+  font-size:90px;
+}
+
+.backdrop-title2{
+  font-size:50px;
 }
 
 .rounded-kiri{

@@ -72,8 +72,9 @@
                     searchable: false,
                     className: 'text-center',
                     render: function(data, type, row) {
+                      console.log(row);
                         return `
-                            <a href="${row.edit_url}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                            <a href="${row.action.edit_url}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                             <button class="btn btn-icon btn-danger" onclick="deleteKonten(${row.id})"><i class="fas fa-trash"></i></button>
                             <form id="delete-form-${row.id}" action="${row.action.delete_url}" method="POST" style="display: none;">
                                 @method('DELETE')

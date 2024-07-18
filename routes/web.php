@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderJualController;
 use App\Http\Controllers\OrderSewaController;
 use App\Http\Controllers\user\CartController;
+use App\Http\Controllers\user\HomeController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ProductJualController;
 use App\Http\Controllers\ProductSewaController;
@@ -45,9 +46,7 @@ Route::post('/daftar/auth',[AuthCustomerController::class, 'daftar'])->name('use
 
 Route::post('/logout', [AuthCustomerController::class, 'logout'])->name('user.logout');
 
-Route::get('/',function(){
-    return view('user.index');
-})->name('user.index');
+Route::get('/',[HomeController::class, 'index'])->name('user.index');
 
 Route::get('syarat-ketentuan',function(){
    return view('user.syarat');

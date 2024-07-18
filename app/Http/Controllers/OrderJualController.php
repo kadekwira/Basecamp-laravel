@@ -45,6 +45,9 @@ class OrderJualController extends Controller
                     } else if($row->status === 'tolak'){
                         $wa = '<a target="_blank" href="https://wa.me/'.$row->customer->phone.'?text=Hai" class="btn btn-icon btn-success"><i class="fa-brands fa-whatsapp" ></i></a>';            
                         return $wa;
+                    }else{
+                        $wa = '<a target="_blank" href="https://wa.me/'.$row->customer->phone.'?text=Hai" class="btn btn-icon btn-success"><i class="fa-brands fa-whatsapp" ></i></a>';            
+                        return $wa;
                     }
                 })
                 ->rawColumns(['status', 'action','id_customer','id_product','status_payment'])
