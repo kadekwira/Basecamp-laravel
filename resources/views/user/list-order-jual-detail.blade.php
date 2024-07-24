@@ -12,12 +12,12 @@
                     <div class="px-4 py-5">
                         <h5 class="text-uppercase">{{$dataOrderAndCustomer->customer->name}}</h5>
                         <div class="d-flex justify-content-between">
-                            <span class="text-dark">Tanggal Order</span>
+                            <span class="text-dark">Date Of Order</span>
                             <span class="text-dark">{{$newDate}}</span>
                         </div>
-                        <h4 class="mt-5 theme-color mb-5">Terima Kasih</h4>
+                        <h4 class="mt-5 theme-color mb-5">Thank You</h4>
                         <div class="d-flex justify-content-between">
-                            <span class="theme-color">Tanggal Beli</span>
+                            <span class="theme-color">Date Of Buy</span>
                             <span class="theme-color">{{$dataOrderAndCustomer->tgl_pesanan}}</span>
                         </div>
                         <div class="mb-3">

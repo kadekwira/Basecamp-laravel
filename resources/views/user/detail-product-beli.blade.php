@@ -17,10 +17,10 @@
         <img src="{{ asset('storage/'.$product->image) }}" alt="" class="border w-100" style="height:200px;" alt="Product Image">
       </div>
       <div class="border p-2">
-        <p class="fs-5">Detail Produk</p>
+        <p class="fs-5">Detail Product</p>
         <p class="fs-5">{{$product->deskripsi}}</p>
       </div>
-      <p class="text-danger">!! Sebelum melakukan penyewaan pastikan untuk membaca syarat ketentuan yang berlaku !!</p>
+      <p class="text-danger"></p>
     </div>
     <div class="d-flex flex-column gap-5">
       <form id="add-to-cart-form" class="row g-3">
