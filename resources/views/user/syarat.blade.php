@@ -46,7 +46,7 @@
     <div class="card w-25">
       <div class="card-body">
         <h5 class="card-title text-center fs-3"><i class="fa-solid fa-toolbox text-primary"></i></h5>
-        <p class="card-text text-center">Mohon untuk menggu <strong>15-30 menit</strong>  jika pesanan ditolak oleh admin </p>
+        <p class="card-text text-center">Mohon untuk menunggu <strong>15-30 menit</strong>  jika pesanan ditolak oleh admin </p>
       </div>
     </div>
     <div class="card w-25">

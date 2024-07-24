@@ -8,7 +8,7 @@
   <div class="mt-5">
     <input type="hidden" id="id_customer" class="form-control" value="{{auth()->user()->id}}">
     <div class="form-group">
-      <label for="start-date">Tanggal Pesanan:</label>
+      <label for="start-date">Order Date:</label>
       <input type="date" id="start-date" class="form-control" required>
     </div>
     <div class="mt-3">

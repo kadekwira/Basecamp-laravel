@@ -8,11 +8,11 @@
   <div class="mt-5">
     <input type="hidden" id="id_customer" class="form-control" value="{{auth()->user()->id}}">
     <div class="form-group">
-      <label for="start-date">Tanggal Peminjaman:</label>
+      <label for="start-date">Rental Date:</label>
       <input type="date" id="start-date" class="form-control" required>
     </div>
     <div class="form-group mt-3">
-      <label for="return-date">Tanggal Pemgembalian:</label>
+      <label for="return-date">Date Of Return:</label>
       <input type="date" id="return-date" class="form-control" required>
     </div>
     <div class="mt-3">
