@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Admin - BaseCamp</title>
-
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/logo.png') }}">
     {{-- Admin Css --}}
     <link rel="stylesheet" href="{{ asset('newAdmin/css_custom/admin.css') }}">
     @yield('addCss')

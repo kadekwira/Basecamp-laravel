@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>Admin Login</title>
-
+  <link rel="icon" type="image/x-icon" href="{{ asset('image/logo.png') }}">
   <!-- General CSS Files -->
   <link rel="stylesheet" href="/newAdmin/dist/assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/newAdmin/dist/assets/modules/fontawesome/css/all.min.css">
