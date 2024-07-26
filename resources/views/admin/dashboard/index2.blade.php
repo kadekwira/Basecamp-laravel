@@ -43,7 +43,7 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Total Products</h4>
+              <h4>Total Produk</h4>
             </div>
             <div class="card-body">
               {{$product}}
@@ -71,7 +71,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h4>Statistics Transaction  </h4>
+            <h4>Statistik Transaksi  </h4>
             <span class="badge badge-danger">IDR</span>
           </div>
           <div class="card-body">
@@ -82,7 +82,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h4>Statistics Pengeluaran  </h4>
+            <h4>Statistik Pengeluaran  </h4>
             <span class="badge badge-danger">IDR</span>
           </div>
           <div class="card-body">

@@ -19,11 +19,12 @@
   </div>
   <div class="d-flex flex-wrap gap-3 justify-content-center align-items-center mt-5">
     @foreach ($products as $item)
-    <a href="{{ route('user-product-sewa.detail',$item->id)}}"class="card" style="width: 18rem; cursor: pointer;">
+    <a href="{{ route('user-product-sewa.detail',$item->id)}}"class="card" style="width: 18rem; cursor: pointer; text-decoration:none !important;">
       <img src="{{ asset('storage/'.$item->image) }}" class="card-img-top w-100" style="height:200px;" alt="Product Image">
       <div class="card-body">
         <h5 class="card-title" style="l">{{$item->nama_product}}</h5>
         <p class="card-text">@rupiah($item->harga_product)</p>
+        <p class="card-text">Sisa Stok : {{$item->stock}}</p>
       </div>
     </a>
     @endforeach

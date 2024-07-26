@@ -17,7 +17,7 @@
                 <thead>                                 
                   <tr class="text-center">
                     <th>No</th>
-                    <th>Nama Product</th>
+                    <th>Nama Produk</th>
                     <th>Jumlah</th>
                     <th>Tanggal Pengeluaran</th>
                     <th>Total Pengeluaran</th>

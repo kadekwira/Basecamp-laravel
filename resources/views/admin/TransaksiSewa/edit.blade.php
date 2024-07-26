@@ -77,6 +77,7 @@
               </div>
             </div>
             <div class="card-footer text-right">
+              <a href="{{route('transaksi-sewa.index')}}" class="btn btn-danger">Batal</a>
               <button class="btn btn-primary">Submit</button>
             </div>
           </form>

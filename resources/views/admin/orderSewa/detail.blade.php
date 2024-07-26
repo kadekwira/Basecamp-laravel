@@ -19,7 +19,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <address>
-                    <strong>Customer:</strong><br>
+                    <strong>Pelanggan:</strong><br>
                       {{$dataOrderAndCustomer->customer->name}}<br>
                       {{$dataOrderAndCustomer->customer->phone}}<br>
                       {{$dataOrderAndCustomer->tgl_pesanan}} - {{$dataOrderAndCustomer->tgl_kembali}}<br>
@@ -46,7 +46,7 @@
                 <table class="table table-striped table-hover table-md">
                   <tr>
                     <th data-width="40">#</th>
-                    <th>Item</th>
+                    <th>Produk</th>
                     <th class="text-center">Harga</th>
                     <th class="text-center">Jumlah</th>
                     <th class="text-right">Total</th>
@@ -80,16 +80,17 @@
             <hr>
             <div class="text-md-right">
               <div class="float-lg-right mb-lg-0 mb-3">
+                <form action="{{route('order-sewa.tolak', $id)}} " method="POST" style="display: inline;">'
+                  @csrf
+                  <input type="hidden" name="_method" value="PUT">
+                  <button type="submit" class="btn btn-icon btn-danger"><i class="far fa-times-circle"></i>Tolak</button>
+              </form>
                 <form action="{{route('order-sewa.acc',$id)}}" method="POST" style="display: inline;">
                   @csrf
                   <input type="hidden" name="_method" value="PUT">
                   <button type="submit" class="btn btn-icon btn-success"><i class="far fa-check-circle"></i> Terima</button>
               </form>
-              <form action="{{route('order-sewa.tolak', $id)}} " method="POST" style="display: inline;">'
-                @csrf
-                <input type="hidden" name="_method" value="PUT">
-                <button type="submit" class="btn btn-icon btn-danger"><i class="far fa-times-circle"></i>Tolak</button>
-            </form>
+
               </div>
             </div>
           </div>

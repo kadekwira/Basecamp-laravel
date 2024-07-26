@@ -11,7 +11,7 @@
           <form method="post" action="{{ route('order-sewa.post') }}" enctype="multipart/form-data">
             @csrf
             <div class="card-header">
-              <h4>Add Data Pesanan</h4>
+              <h4>Form Tambah Data Pesanan</h4>
             </div>
             <div class="card-body row">
               <div class="col-4">
@@ -41,7 +41,7 @@
 
               <div class="col-12">
                 <div class="form-group">
-                  <label>Products</label>
+                  <label>Produk</label>
                   <input type="text" id="search-product" class="form-control" placeholder="Search for products...">
                   <div id="search-results" class="list-group"></div>
                 </div>
@@ -53,8 +53,8 @@
                     <table class="table table-striped table-hover table-md"id="products-table">
                       <thead>
                         <tr>
-                          <th>Product</th>
-                          <th>Quantity</th>
+                          <th>Produk</th>
+                          <th>Jumlah</th>
                           <th>Harga Product</th>
                           <th>Harga Hilang</th>
                           <th>Harga Telat</th>
@@ -89,6 +89,7 @@
               </div>
             </div>
             <div class="card-footer text-right">
+              <a href="{{route('order-sewa.index')}}" class="btn btn-danger">Batal</a>
               <button class="btn btn-primary">Submit</button>
             </div>
           </form>

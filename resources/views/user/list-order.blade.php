@@ -6,7 +6,7 @@
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
-        <tr>
+        <tr class="text-center ">
           <th scope="col">#</th>
           <th scope="col">Tanggal Pesanan</th>
           <th scope="col">Tanggal Pengembalian</th>
@@ -32,7 +32,7 @@
           </td>
           <td class="py-3">@rupiah($item->total)</td>
           <td class="py-3">
-            <a href="{{route('order.sewa.detail',$item->id)}}" class="bg-primary p-2 rounded text-white">
+            <a href="{{route('order.sewa.detail',$item->id)}}" class="bg-primary p-2 rounded text-white" style="text-decoration: none;">
               Detail
             </a>
           </td>

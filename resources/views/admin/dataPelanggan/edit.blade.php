@@ -3,7 +3,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Data Customers</h1>
+      <h1>Data Pelanggan</h1>
     </div>
     <div class="row">
       <div class="col-12">
@@ -12,7 +12,7 @@
             @csrf
             @method('PUT')
             <div class="card-header">
-              <h4>Edit Data Customer</h4>
+              <h4> Form Edit Data Pelanggan</h4>
             </div>
             <div class="card-body row">
               <div class="col-12">
@@ -28,7 +28,7 @@
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label> Name</label>
+                  <label> Nama</label>
                   <input type="text" class="form-control" required=""
                   name="name" value="{{$data->name}}"
                   >
@@ -42,13 +42,13 @@
               </div>
               <div class="col-4">
                 <div class="form-group">
-                  <label>Phone</label>
+                  <label>No Telp</label>
                   <input type="number" class="form-control" name="phone" required value="{{$data->phone}}">
                 </div>
               </div>
               <div class="col-8">
                 <div class="form-group">
-                  <label>Address</label>
+                  <label>Alamat</label>
                   <input type="text" class="form-control" name="address" required value="{{$data->address}}">
                 </div> 
               </div>
@@ -73,7 +73,8 @@
             
             </div>
             <div class="card-footer text-right">
-              <button class="btn btn-primary">Submit</button>
+              <a href="{{route('customers.index')}}" class="btn btn-danger">Batal</a>
+              <button class="btn btn-primary">Simpan</button>
             </div>
           </form>
         </div>

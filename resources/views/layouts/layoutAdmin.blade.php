@@ -118,7 +118,7 @@
                                 </li>
                                 <li class="margin-left-neg">
                                   <a class="nav-link" href="{{route('product-sewa.index')}}"> 
-                                    <i class="fa-solid fa-boxes-stacked"></i>Data Product Sewa
+                                    <i class="fa-solid fa-boxes-stacked"></i>Data Produk Sewa
                                   </a>
                                 </li>
                                 <li class="margin-left-neg">
@@ -196,7 +196,7 @@
                                 </li>
                                 <li class="margin-left-neg">
                                   <a class="nav-link" href="{{route('product-jual.index')}}"> 
-                                    <i class="fa-solid fa-boxes-stacked"></i>Data Product Jual
+                                    <i class="fa-solid fa-boxes-stacked"></i>Data Produk Jual
                                   </a>
                                 </li>
                                 <li class="margin-left-neg">
@@ -230,7 +230,7 @@
                             <ul class="dropdown-menu">
                                 <li class="margin-left-neg">
                                   <a class="nav-link" href="{{route('transaksi-jual.reportJual')}}"> 
-                                    Laporan Penyewaan
+                                    Laporan Penjualan
                                   </a>
                                 </li>    
                                 <li class="margin-left-neg">

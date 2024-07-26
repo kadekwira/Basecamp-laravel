@@ -18,7 +18,7 @@
                 <thead>                                 
                   <tr class="text-center">
                     <th>No</th>
-                    <th>Customer</th>
+                    <th>Nama Pelanggan</th>
                     <th>Tanggal Pesanan</th>
                     <th>Tanggal Pembayaran</th>
                     <th>Total</th>

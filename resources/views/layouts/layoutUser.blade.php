@@ -35,10 +35,10 @@
                         <a class="nav-link text-primary" href="{{ route('syarat-ketentuan') }}">Syarat & Ketentuan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('user-product-sewa.index') }}">Product Sewa</a>
+                        <a class="nav-link text-primary" href="{{ route('user-product-sewa.index') }}">Produk Sewa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('user-product-jual.index') }}">Product Beli</a>
+                        <a class="nav-link text-primary" href="{{ route('user-product-jual.index') }}">Produk Beli</a>
                     </li>
                     @auth
                         <li class="nav-item " style="margin-left:40px;">
@@ -181,22 +181,11 @@
         <!-- Footer -->
     </div>
     <!-- End of .container -->
-    @yield('addJavascript')
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
-    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+       @yield('addJavascript')
 </body>
 
 </html>

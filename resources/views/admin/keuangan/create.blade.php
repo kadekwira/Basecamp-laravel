@@ -11,7 +11,7 @@
           <form method="post" action="{{route('pengeluaran.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="card-header">
-              <h4>Add Data Pengeluaran</h4>
+              <h4>Form Tambah Data Pengeluaran</h4>
             </div>
             <div class="card-body row">
               <div class="col-12">
@@ -42,6 +42,7 @@
               </div>
             </div>
             <div class="card-footer text-right">
+              <a href="{{route('pengeluaran.index')}}" class="btn btn-danger">Batal</a>
               <button class="btn btn-primary">Submit</button>
             </div>
           </form>

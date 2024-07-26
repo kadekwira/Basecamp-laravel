@@ -3,7 +3,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Data Customers</h1>
+      <h1>Data Pelanggan</h1>
     </div>
     <div class="row">
       <div class="col-12">

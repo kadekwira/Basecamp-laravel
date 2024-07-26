@@ -26,23 +26,23 @@
       <form id="add-to-cart-form" class="row g-3">
         <input type="hidden" name="id_product" value="{{$product->id}}">
         <div class="col-md-12">
-          <label for="nama_product" class="form-label">Product Name</label>
+          <label for="nama_product" class="form-label">Nama Produk</label>
           <input type="text" class="form-control" name="nama_product" value="{{$product->nama_product}}" readonly>
         </div>
         <div class="col-md-12">
-          <label for="harga_product" class="form-label">Price/Day</label>
+          <label for="harga_product" class="form-label">Harga/hari</label>
           <input type="text" class="form-control" name="harga_product" value="@rupiah($product->harga_product)" readonly>
         </div>
         <div class="col-md-12">
-          <label for="jumlah_product" class="form-label">Quantity </label>
+          <label for="jumlah_product" class="form-label">Jumlah </label>
           <input type="number" class="form-control" name="jumlah_product" required>
         </div>
         <div class="col-md-12">
-          <label for="note" class="form-label">Note </label>
+          <label for="note" class="form-label">Catatan </label>
           <input type="text" class="form-control" name="note">
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Add to Card</button>
+          <button type="submit" class="btn btn-primary">Tambah Keranjang</button>
         </div>
       </form>
     </div>

@@ -11,7 +11,7 @@
           <form method="post" action="{{route('data-admin-jual.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="card-header">
-              <h4>Add Data Admin</h4>
+              <h4>Form Tambah Data Admin</h4>
             </div>
             <div class="card-body row">
               <div class="col-12">
@@ -26,7 +26,7 @@
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label> Name</label>
+                  <label> Nama</label>
                   <input type="text" class="form-control" required=""
                   name="name"
                   >
@@ -46,13 +46,13 @@
               </div>
               <div class="col-4">
                 <div class="form-group">
-                  <label>Phone</label>
+                  <label>No Telp</label>
                   <input type="number" class="form-control" name="phone" required>
                 </div>
               </div>
               <div class="col-8">
                 <div class="form-group">
-                  <label>Address</label>
+                  <label>Alamat</label>
                   <input type="text" class="form-control" name="address" required>
                 </div>
               </div>
@@ -78,6 +78,7 @@
               </div>
             </div>
             <div class="card-footer text-right">
+              <a href="{{route('data-admin-jual.index')}}" class="btn btn-danger">Batal</a>
               <button class="btn btn-primary">Submit</button>
             </div>
           </form>

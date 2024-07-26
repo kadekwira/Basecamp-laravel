@@ -3,7 +3,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Data Class</h1>
+      <h1>Data Pelanggan</h1>
     </div>
     <div class="row">
       <div class="col-12 ">
@@ -11,7 +11,7 @@
           <form method="post" action="{{route('customers.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="card-header">
-              <h4>Add Data Customers</h4>
+              <h4>Form Tambah Data Pelanggan</h4>
             </div>
             <div class="card-body row">
               <div class="col-12">
@@ -26,7 +26,7 @@
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label> Name</label>
+                  <label> Nama</label>
                   <input type="text" class="form-control" required=""
                   name="name"
                   >
@@ -46,13 +46,13 @@
               </div>
               <div class="col-4">
                 <div class="form-group">
-                  <label>Phone</label>
+                  <label>No Telp</label>
                   <input type="number" class="form-control" name="phone" required>
                 </div>
               </div>
               <div class="col-8">
                 <div class="form-group">
-                  <label>Address</label>
+                  <label>Alamat</label>
                   <input type="text" class="form-control" name="address" required>
                 </div>
               </div>
@@ -78,7 +78,8 @@
               </div>
             </div>
             <div class="card-footer text-right">
-              <button class="btn btn-primary">Submit</button>
+              <a href="{{route('customers.index')}}" class="btn btn-danger">Batal</a>
+              <button class="btn btn-primary">Simpan</button>
             </div>
           </form>
         </div>

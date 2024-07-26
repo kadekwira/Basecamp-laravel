@@ -18,11 +18,11 @@
                 <thead>                                 
                   <tr class="text-center">
                     <th>No</th>
-                    <th>Customer</th>
+                    <th>Nama Pelanggan</th>
                     <th>Tanggal Pesanan</th>
                     <th>Tanggal Kembali</th>
                     <th>Total</th>
-                    <th>Note</th>
+                    <th>Catatan</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>

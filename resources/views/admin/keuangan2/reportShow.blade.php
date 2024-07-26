@@ -24,7 +24,7 @@
                     <th>#</th>
                     <th>Transaksi ID</th>
                     <th>Order ID</th>
-                    <th>Customer</th>
+                    <th>Nama Pelanggan</th>
                     <th>Total</th>
                     <th>Status Payment</th>
                     <th>Status</th>

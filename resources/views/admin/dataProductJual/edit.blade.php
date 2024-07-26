@@ -3,7 +3,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Data Product Jual</h1>
+      <h1>Data Produk Jual</h1>
     </div>
     <div class="row">
       <div class="col-12 ">
@@ -12,7 +12,7 @@
             @csrf
             @method('PUT')
             <div class="card-header">
-              <h4>Edit Data Product Jual</h4>
+              <h4>Form Edit Data Produk Jual</h4>
             </div>
             <div class="card-body row">
               <div class="col-12">
@@ -22,13 +22,13 @@
                     <img id="photo-preview" src="{{ $data->image ? asset('storage/' . $data->image) : '' }}" alt="your image" style="display: {{ $data->image ? 'block' : 'none' }}"/>
                     <button type="button" id="remove-photo" class="btn btn-sm btn-danger" style="display: {{ $data->image ? 'inline-block' : 'none' }}"><i class="fas fa-times"></i></button>
                   </div>
-                  <label>Image</label>
+                  <label>Gambar Produk</label>
                   <input type="file" class="form-control" name="image" id="image" accept="image/*">
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label> Nama Product</label>
+                  <label> Nama Produk</label>
                   <input type="text" class="form-control" required=""
                   name="nama_product"  value="{{$data->nama_product}}"
                   >
@@ -36,13 +36,13 @@
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label>Harga Product</label>
+                  <label>Harga Produk</label>
                   <input type="text" class="form-control" name="harga_product" id="harga_product" required value="@rupiah($data->harga_product)">
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label>Deskripsi Product</label>
+                  <label>Deskripsi Produk</label>
                   <input type="text" class="form-control" name="deskripsi"  required value="{{$data->deskripsi}}">
                 </div>
               </div>
@@ -63,6 +63,7 @@
                </div>
             </div>
             <div class="card-footer text-right">
+              <a href="{{route('product-jual.index')}}" class="btn btn-danger">Batal</a>
               <button class="btn btn-primary">Submit</button>
             </div>
           </form>

@@ -2,17 +2,17 @@
 
 @section('content')
 <div class="container position-relative" style="margin-top:100px;">
-  <h1 class="text-center">Your Cart</h1>
+  <h1 class="text-center">Keranjang Anda</h1>
   <div id="cart-details" class="d-flex flex-wrap gap-3 justify-content-center align-items-center mt-5">
   </div>
   <div class="mt-5">
     <input type="hidden" id="id_customer" class="form-control" value="{{auth()->user()->id}}">
     <div class="form-group">
-      <label for="start-date">Order Date:</label>
+      <label for="start-date">Tanggal Pesanan:</label>
       <input type="date" id="start-date" class="form-control" required>
     </div>
     <div class="mt-3">
-      <h5>Total Price: <span id="total-price">0</span></h5>
+      <h5>Total Harga: <span id="total-price">0</span></h5>
     </div>
     <div class="mt-3 text-center">
       <button id="pay-button" class="btn btn-primary">Beli</button>
@@ -88,8 +88,8 @@ $(document).ready(function () {
               <div class="card-body">
                 <h5 class="card-title">${product.nama_product}</h5>
                 <p class="card-text">${formatRupiah(product.harga_product)}</p>
-                <p class="card-text">Qty : <input type="number" value="${cartItem.quantity}" class="form-control quantity-input" data-id="${product.id}"></p>
-                <p class="card-text">Note: <input type="text" value="${cartItem.note}" class="form-control note-input" data-id="${product.id}"></p>
+                <p class="card-text">Jumlah : <input type="number" value="${cartItem.quantity}" class="form-control quantity-input" data-id="${product.id}"></p>
+                <p class="card-text">Catatan: <input type="text" value="${cartItem.note}" class="form-control note-input" data-id="${product.id}"></p>
                 <button class="btn btn-danger delete-btn" data-id="${product.id}">Delete</button>
               </div>
             </div>

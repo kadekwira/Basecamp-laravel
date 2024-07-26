@@ -740,7 +740,7 @@
             <tr>
                 <td class="border-b-2 border-main pb-3 pl-3 font-bold text-main">#</td>
                 <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Order ID </td>
-                <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Product </td>
+                <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Produk </td>
                 <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Harga</td>
                 <td class="border-b-2 border-main pb-3 pl-2 text-center font-bold text-main">Jumlah</td>
                 <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Subtotal</td>

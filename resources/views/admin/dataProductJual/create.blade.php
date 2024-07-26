@@ -3,7 +3,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Data Product Jual</h1>
+      <h1>Data Produk Jual</h1>
     </div>
     <div class="row">
       <div class="col-12 ">
@@ -11,7 +11,7 @@
           <form method="post" action="{{route('product-jual.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="card-header">
-              <h4>Add Data Product Jual</h4>
+              <h4>Form Tambah Data Produl Jual</h4>
             </div>
             <div class="card-body row">
               <div class="col-12">
@@ -20,13 +20,13 @@
                     <img id="photo-preview" src="#" alt="your image" style="display: none;" />
                     <button type="button" id="remove-photo" class="btn btn-sm btn-danger" style="display: none;"><i class="fas fa-xmark"></i></button>
                 </div>
-                  <label>Image</label>
+                  <label>Gambar Produk</label>
                   <input type="file" class="form-control" name="image" accept="image/*">
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label> Nama Product</label>
+                  <label> Nama Produk</label>
                   <input type="text" class="form-control" required=""
                   name="nama_product"
                   >
@@ -34,13 +34,13 @@
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label>Harga Product</label>
+                  <label>Harga Produk</label>
                   <input type="text" class="form-control" name="harga_product" id="harga_product" required>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <label>Deskripsi Product</label>
+                  <label>Deskripsi Produk</label>
                   <input type="text" class="form-control" name="deskripsi"  required>
                 </div>
               </div>
@@ -62,6 +62,7 @@
               </div>
             </div>
             <div class="card-footer text-right">
+              <a href="{{route('product-jual.index')}}" class="btn btn-danger">Batal</a>
               <button class="btn btn-primary">Submit</button>
             </div>
           </form>

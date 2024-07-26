@@ -3,7 +3,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Data Product Sewa</h1>
+      <h1>Data Produk Sewa</h1>
     </div>
     <div class="row">
       <div class="col-12">
@@ -17,10 +17,10 @@
                 <thead>                                 
                   <tr class="text-center">
                     <th>No</th>
-                    <th>Nama Product</th>
-                    <th>Gambar Product</th>
+                    <th>Nama Produk</th>
+                    <th>Gambar Produk</th>
                     <th>Stock</th>
-                    <th>Harga Product</th>
+                    <th>Harga Produk</th>
                     <th>Deskripsi</th>
                     <th>Status</th>
                     <th>Action</th>

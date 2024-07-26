@@ -19,6 +19,7 @@ use App\Http\Controllers\user\PaymentController;
 use App\Http\Controllers\DashboardJualController;
 use App\Http\Controllers\TransaksiJualController;
 use App\Http\Controllers\TransaksiSewaController;
+use App\Http\Controllers\PengeluaranJualController;
 use App\Http\Controllers\user\AuthCustomerController;
 use App\Http\Controllers\user\CustomerOrderController;
 use App\Http\Controllers\user\UserProductBeliController;
@@ -169,9 +170,9 @@ Route::prefix('admin-jual')->middleware([ 'admin.active'])->group(function(){
         Route::post('report-jual/cetak', [TransaksiJualController::class, 'reportJualCetak'])->name('transaksi-jual.reportJualCetak');
 
 
-        Route::get('pengeluaran-jual', [PengeluaranController::class, 'index'])->name('pengeluaran-jual.index');
-        Route::get('pengeluaran-jual/create', [PengeluaranController::class, 'create'])->name('pengeluaran-jual.create');
-        Route::post('pengeluaran-jual/store', [PengeluaranController::class, 'store'])->name('pengeluaran-jual.store');
+        Route::get('pengeluaran-jual', [PengeluaranJualController::class, 'index'])->name('pengeluaran-jual.index');
+        Route::get('pengeluaran-jual/create', [PengeluaranJualController::class, 'create'])->name('pengeluaran-jual.create');
+        Route::post('pengeluaran-jual/store', [PengeluaranJualController::class, 'store'])->name('pengeluaran-jual.store');
 });
 
 
