@@ -62,7 +62,7 @@
                 style="height: 300px !important;">
             <img src="{{ asset('image/user/galery4.jpeg') }}" class="img-fluid slider-img"
                 style="height: 300px !important;">
-            <img src="{{ asset('image/user/galery3.jpeg') }}" class="img-fluid slider-img"
+            <img src="{{ asset('image/user/galery5.jpg') }}" class="img-fluid slider-img"
                 style="height: 300px !important;">
             <img src="{{ asset('image/user/galery4.jpeg') }}" class="img-fluid slider-img"
                 style="height: 300px !important;">

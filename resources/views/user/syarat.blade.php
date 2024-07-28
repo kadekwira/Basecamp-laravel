@@ -27,20 +27,26 @@
       <div class="card-body">
         <h5 class="card-title text-center fs-3"><i class="fa-solid fa-toolbox text-primary"></i></h5>
         <p class="card-text text-center"><strong>Kerusakan</strong> barang akan dikenakan denda 
-          <strong>Rp 5.000 - 400.000</strong>  sesuai keadaan barang.</p>
+          <strong>Rp 5.000 - 700.000</strong>  sesuai keadaan barang.</p>
       </div>
     </div>
     <div class="card w-25">
       <div class="card-body">
         <h5 class="card-title text-center fs-3"><i class="fa-solid fa-toolbox text-primary"></i></h5>
         <p class="card-text text-center"><strong>Kehilangan</strong>  barang akan dikenakan denda
-         <strong>Rp 5.000 - 400.000</strong>  sesuai keadaan barang</p>
+         <strong>Rp 5.000 - 700.000</strong>  sesuai keadaan barang</p>
       </div>
     </div>
     <div class="card w-25">
       <div class="card-body">
         <h5 class="card-title text-center fs-3"><i class="fa-solid fa-toolbox text-primary"></i></h5>
         <p class="card-text text-center">Konfirmasi pesanan <strong>diterima/ditolak</strong>  dikirim melalui <strong>chat personal</strong> </p>
+      </div>
+    </div>
+    <div class="card w-25">
+      <div class="card-body">
+        <h5 class="card-title text-center fs-3"><i class="fa-solid fa-toolbox text-primary"></i></h5>
+        <p class="card-text text-center">1111111 pesanan <strong>diterima/ditolak</strong>  dikirim melalui <strong>chat personal</strong> </p>
       </div>
     </div>
     <div class="card w-25">

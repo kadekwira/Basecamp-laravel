@@ -102,9 +102,7 @@
                                 Basecamp369
                             </h6>
                             <p>
-                                Here you can use rows and columns to organize your footer
-                                content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit.
+                                Life is the greatest adventure. Enjoy every moment with our products.
                             </p>
 
                             <h6 class="text-uppercase mb-4 font-weight-bold">
