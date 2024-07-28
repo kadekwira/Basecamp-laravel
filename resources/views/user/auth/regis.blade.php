@@ -17,10 +17,25 @@
         background-color: #F0861A !important;
         border: none;
       }
+      .password-container {
+        position: relative;
+      }
+      .password-container input {
+        padding-right: 2.5rem;
+      }
+      .password-container .fa-eye,
+      .password-container .fa-eye-slash {
+        position: absolute;
+        top: 70%;
+        right: 1rem;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #ccc;
+      }
     </style>
   </head>
   <body id="login">
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg">
       <div class="container">
         <img src="{{ asset('image/logo.png') }}" style="width:100px;">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +66,7 @@
     <div class="container h-100 w-100">
       <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
         <h1 class="text-white fs-1">Create Your Account</h1>
-        <form action="{{route('user.daftar')}}" method="post" class=" p-3 w-50 row" enctype="multipart/form-data">
+        <form action="{{route('user.daftar')}}" method="post" class="p-3 w-50 row" enctype="multipart/form-data">
           @csrf
           <div class="col-md-6">
             <label for="nama" class="form-label text-white">Nama <span class="text-danger">*</span></label>
@@ -69,13 +84,15 @@
             <label for="phone" class="form-label text-white">Phone <span class="text-danger">*</span></label>
             <input type="number" class="form-control" id="phone" name="phone" required placeholder="contoh : 628129432">
           </div>
-          <div class="col-md-12">
+          <div class="col-md-12 password-container">
             <label for="password" class="form-label text-white">Password <span class="text-danger">*</span></label>
             <input type="password" class="form-control" id="password" name="password" required>
+            <i class="fas fa-eye text-secondary" id="toggleEye" onclick="togglePassword('password', 'toggleEye')"></i>
           </div>
-          <div class="col-md-12">
-            <label for="password" class="form-label text-white"> Konfirmasi Password <span class="text-danger">*</span></label>
-            <input type="password" class="form-control" id="password" name="password2" required>
+          <div class="col-md-12 password-container">
+            <label for="password2" class="form-label text-white"> Konfirmasi Password <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="password2" name="password2" required>
+            <i class="fas fa-eye text-secondary" id="toggleEye2" onclick="togglePassword('password2', 'toggleEye2')"></i>
           </div>
           <div class="col-md-12">
             <label for="ktp" class="form-label text-white"> KTP <span class="text-danger">*</span></label>
@@ -88,10 +105,25 @@
       </div>
     </div>
 
-@include('sweetalert::alert')
-@yield('addJavascript')
+    @include('sweetalert::alert')
+    @yield('addJavascript')
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      function togglePassword(inputId, toggleId) {
+        const passwordField = document.getElementById(inputId);
+        const toggleEye = document.getElementById(toggleId);
+        if (passwordField.type === 'password') {
+          passwordField.type = 'text';
+          toggleEye.classList.remove('fa-eye');
+          toggleEye.classList.add('fa-eye-slash');
+        } else {
+          passwordField.type = 'password';
+          toggleEye.classList.remove('fa-eye-slash');
+          toggleEye.classList.add('fa-eye');
+        }
+      }
+    </script>
   </body>
 </html>

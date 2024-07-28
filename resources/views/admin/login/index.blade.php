@@ -18,6 +18,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
   integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    .password-container {
+      position: relative;
+    }
+    .password-container input {
+      padding-right: 2.5rem;
+    }
+    .password-container .fa-eye,
+    .password-container .fa-eye-slash {
+      position: absolute;
+      top: 70%;
+      right: 1rem;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #ccc;
+    }
+  </style>
+</head>
 <body>
   @include('sweetalert::alert')
   <div id="app">
@@ -29,7 +47,7 @@
               <h5>BASECAMP</h5>
             </div>
 
-            <div class="card card-primary">
+            <div class="card card-primary" >
               <div class="card-header"><h4>Login</h4></div>
 
               <div class="card-body">
@@ -43,20 +61,19 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group password-container">
                     <div class="d-block">
-                    	<label for="password" class="control-label">Password</label>
+                      <label for="password" class="control-label">Password</label>
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                    <i class="fas fa-eye" id="toggleEye" onclick="togglePassword('password', 'toggleEye')"></i>
                     <div class="invalid-feedback">
                       please fill in your password
                     </div>
                   </div>
 
-
-
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4" style="background-color:#F0861A !important; border:none !important; box-shadow:none !important;">
                       Login
                     </button>
                   </div>
@@ -86,5 +103,20 @@
   <!-- Template JS File -->
   <script src="/newAdmin/dist/assets/js/scripts.js"></script>
   <script src="/newAdmin/dist/assets/js/custom.js"></script>
+  <script>
+    function togglePassword(inputId, toggleId) {
+      const passwordField = document.getElementById(inputId);
+      const toggleEye = document.getElementById(toggleId);
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        toggleEye.classList.remove('fa-eye');
+        toggleEye.classList.add('fa-eye-slash');
+      } else {
+        passwordField.type = 'password';
+        toggleEye.classList.remove('fa-eye-slash');
+        toggleEye.classList.add('fa-eye');
+      }
+    }
+  </script>
 </body>
 </html>
