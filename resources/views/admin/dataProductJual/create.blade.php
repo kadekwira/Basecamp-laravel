@@ -11,7 +11,7 @@
           <form method="post" action="{{route('product-jual.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="card-header">
-              <h4>Form Tambah Data Produl Jual</h4>
+              <h4>Form Tambah Data Produk Jual</h4>
             </div>
             <div class="card-body row">
               <div class="col-12">
