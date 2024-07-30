@@ -46,7 +46,7 @@
     <div class="card w-25">
       <div class="card-body">
         <h5 class="card-title text-center fs-3"><i class="fa-solid fa-toolbox text-primary"></i></h5>
-        <p class="card-text text-center">1111111 pesanan <strong>diterima/ditolak</strong>  dikirim melalui <strong>chat personal</strong> </p>
+        <p class="card-text text-center">pesanan <strong>diterima/ditolak</strong>  dikirim melalui <strong>chat personal</strong> </p>
       </div>
     </div>
     <div class="card w-25">
