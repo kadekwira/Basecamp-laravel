@@ -13,5 +13,6 @@ class Konten extends Model
         'jadwal_post',
         'jadwal_end',
         'url',
+        'type',
     ];
 }

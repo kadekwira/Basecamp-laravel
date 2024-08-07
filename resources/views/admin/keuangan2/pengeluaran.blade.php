@@ -59,8 +59,8 @@
       columns: [
         { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false ,className: 'text-center'},
         { data: 'nama product', name: 'nama product',className: 'text-center' },
-        { data: 'tgl_pembelian', name: 'tgl_pembelian',className: 'text-center'},
         { data: 'jumlah', name: 'jumlah' ,className: 'text-center'},
+        { data: 'tgl_pembelian', name: 'tgl_pembelian',className: 'text-center'},
         { data: 'total', name: 'total' ,className: 'text-center', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp ')},
       ]
     });

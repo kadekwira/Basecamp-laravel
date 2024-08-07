@@ -85,7 +85,7 @@ class Customer2Controller extends Controller
 
         $user = User::create($data);
 
-        return redirect()->route('customers-jual.index')->with('success', 'Customer berhasil dibuat.');
+        return redirect()->route('customers-jual.index')->with('success', 'Data Pelanggan berhasil dibuat.');
     }
 
     /**
@@ -142,7 +142,7 @@ class Customer2Controller extends Controller
 
         $user->update($data);
 
-        return redirect()->route('customers-jual.index')->with('success', 'Customer berhasil di update.');
+        return redirect()->route('customers-jual.index')->with('success', 'Data Pelanggan berhasil di update.');
     }
 
     /**

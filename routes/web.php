@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Str;
+use App\Mail\ResetPasswordMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin2Controller;
@@ -21,6 +24,7 @@ use App\Http\Controllers\TransaksiJualController;
 use App\Http\Controllers\TransaksiSewaController;
 use App\Http\Controllers\PengeluaranJualController;
 use App\Http\Controllers\user\AuthCustomerController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\user\CustomerOrderController;
 use App\Http\Controllers\user\UserProductBeliController;
 use App\Http\Controllers\user\UserProductSewaController;
@@ -39,6 +43,18 @@ use App\Http\Controllers\user\CustomerTransaksiController;
 */
 
 // User
+
+
+
+Route::get('/reset-password/admin', [ResetPasswordController::class, 'index'])->name('reset.index');
+Route::get('/reset-password', [ResetPasswordController::class, 'user'])->name('reset.user');
+
+Route::post('/reset-password/email', [ResetPasswordController::class, 'sendResetLinkEmail'])->name('reset.post');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'resetPasswordIndex'])->name('password.reset');
+Route::post('/reset-password/store', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+
+
 Route::get('/login',[AuthCustomerController::class, 'viewLogin'])->name('user.loginView');
 Route::post('/login/auth',[AuthCustomerController::class, 'login'])->name('user.login');
 

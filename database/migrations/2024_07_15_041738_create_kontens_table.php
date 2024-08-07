@@ -17,6 +17,7 @@ return new class extends Migration
             $table->dateTime('jadwal_post');
             $table->dateTime('jadwal_end');
             $table->string('url');
+            $table->string('type');
             $table->timestamps();
         });
     }

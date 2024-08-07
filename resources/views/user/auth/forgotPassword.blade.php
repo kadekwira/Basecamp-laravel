@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login User</title>
+    <title>Lupa Password</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/user.css') }}">
     <script src="https://kit.fontawesome.com/2f708729c7.js" crossorigin="anonymous"></script>
@@ -67,24 +67,14 @@
 
     <div class="container h-100 w-100">
       <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
-        <h1 class="text-white fs-1">Login To Your Account</h1>
-        <form action="{{route('user.login')}}" method="post" class="p-3" style="width:35%;">
+        <h1 class="text-white fs-1">Lupa Password</h1>
+        <form action="{{route('reset.post')}}" method="post" class="p-3" style="width:35%;">
           @csrf
           <div class="mb-3">
             <input type="email" class="form-control p-2" id="exampleInputEmail1" placeholder="email" name="email">
           </div>
-          <div class="mb-3 password-container">
-            <input type="password" class="form-control p-2" id="exampleInputPassword1" placeholder="password" name="password">
-            <i class="fas fa-eye text-secondary" id="toggleEye" onclick="togglePassword()"></i>
-          </div>
           <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary w-25">Login</button>
-          </div>
-          <div class="d-flex justify-content-center mt-3">
-            <span class="text-white">Belum punya akun ? <a href="{{route('user.viewRegis')}}" class="text-white">Registrasi</a></span>
-          </div>
-          <div class="d-flex justify-content-center mt-3">
-            <a href="{{route('reset.user')}}" class="text-white">Lupa Password ?</a>
+            <button type="submit" class="btn btn-primary w-25">Kirim</button>
           </div>
         </form>
       </div>
@@ -95,20 +85,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-      function togglePassword() {
-        const passwordField = document.getElementById('exampleInputPassword1');
-        const toggleEye = document.getElementById('toggleEye');
-        if (passwordField.type === 'password') {
-          passwordField.type = 'text';
-          toggleEye.classList.remove('fa-eye');
-          toggleEye.classList.add('fa-eye-slash');
-        } else {
-          passwordField.type = 'password';
-          toggleEye.classList.remove('fa-eye-slash');
-          toggleEye.classList.add('fa-eye');
-        }
-      }
-    </script>
   </body>
 </html>

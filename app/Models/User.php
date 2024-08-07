@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\TransaksiSewa;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -66,4 +67,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(TransaksiSewa::class, 'id_customer');
     }
+
 }

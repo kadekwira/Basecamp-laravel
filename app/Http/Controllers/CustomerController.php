@@ -86,7 +86,7 @@ class CustomerController extends Controller
 
         $user = User::create($data);
 
-        return redirect()->route('customers.index')->with('success', 'Customer berhasil dibuat.');
+        return redirect()->route('customers.index')->with('success', 'Data Pelanggan berhasil dibuat.');
     }
 
     /**
@@ -144,7 +144,7 @@ class CustomerController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('customers.index')->with('success', 'Customer berhasil di update.');
+        return redirect()->route('customers.index')->with('success', 'Data Pelanggan berhasil di update.');
     }
 
     /**
@@ -160,6 +160,6 @@ class CustomerController extends Controller
 
         $user->delete();
 
-        return response()->json(['message' => 'Customer deleted successfully'], 200);
+        return response()->json(['message' => 'Data Pelanggan deleted successfully'], 200);
     }
 }

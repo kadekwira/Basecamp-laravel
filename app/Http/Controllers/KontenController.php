@@ -54,8 +54,9 @@ class KontenController extends Controller
             'jadwal_post' => 'required',
             'jadwal_end' => 'required',
             'url' => 'required|string',
+            'type' => 'required|string',
         ]);
-        $data = $request->only(['nama_konten', 'jadwal_post','jadwal_end', 'url']);
+        $data = $request->only(['nama_konten', 'jadwal_post','jadwal_end', 'url','type']);
         $konten = Konten::create($data);
         return redirect()->route('konten.index')->with('success', 'Konten berhasil dibuat.');
     }
@@ -88,9 +89,10 @@ class KontenController extends Controller
             'jadwal_post' => 'required',
             'jadwal_end' => 'required',
             'url' => 'required|string',
+            'type' => 'required|string',
         ]);
 
-        $data = $request->only(['nama_konten', 'jadwal_post','jadwal_end', 'url']);
+        $data = $request->only(['nama_konten', 'jadwal_post','jadwal_end', 'url','type']);
         $konten->update($data);
         return redirect()->route('konten.index')->with('success', 'Konten berhasil di update.');
     }

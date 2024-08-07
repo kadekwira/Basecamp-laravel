@@ -40,6 +40,15 @@
                   <input type="text" class="form-control" name="url" required>
                 </div>
               </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Tipe</label>
+                  <select class="form-control" id="type" name="type" required>
+                    <option value="img">Gambar</option>
+                    <option value="video">Video</option>
+                </select>
+                </div>
+              </div>
             </div>
             <div class="card-footer text-right">
               <button class="btn btn-primary">Submit</button>

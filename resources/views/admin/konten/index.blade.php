@@ -21,6 +21,7 @@
                     <th>Jadwal Unggah</th>
                     <th>Jadwal Berakhir</th>
                     <th>Video/Foto</th>
+                    <th>Tipe</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -65,6 +66,7 @@
                 { data: 'jadwal_post', name: 'jadwal_post', className: 'text-center' },
                 { data: 'jadwal_end', name: 'jadwal_end', className: 'text-center' },
                 { data: 'url', name: 'url', className: 'text-center' },
+                { data: 'type', name: 'type', className: 'text-center' },
                 {
                     data: 'action',
                     name: 'action',

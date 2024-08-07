@@ -77,6 +77,10 @@
                       Login
                     </button>
                   </div>
+                </div>
+                <div class="d-flex justify-content-center mb-3">
+                  <a href="{{route('reset.index')}}" style="color: #F0861A;">Lupa Password ?</a>
+                </div>
                 </form>
 
               </div>

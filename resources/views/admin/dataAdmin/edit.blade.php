@@ -70,7 +70,6 @@
                     </select>
                 </div>
                </div>
-            
             </div>
             <div class="card-footer text-right">
               <a href="{{route('data-admin.index')}}" class="btn btn-danger">Batal</a>

@@ -83,6 +83,18 @@
 
     @if ($kontenList == null)
     @else
+        @if ($kontenList->type=='img')
+        <div class="container-fluid"
+        style="padding-top:50px; padding-bottom:100px; margin-top:100px; background-color:rgb(244, 244, 244);">
+        <section class="container">
+            <h1 class="text-center text-primary">{{ $kontenList->nama_konten }}</h1>
+            <div class="d-flex justify-content-center mt-5">
+                <img src="{{ $kontenList->url }}" alt="{{ $kontenList->nama_konten }}" width="800" height="400">
+            </div>
+        </section>
+    </div>
+        @else
+            
         <div class="container-fluid"
             style="padding-top:50px; padding-bottom:100px; margin-top:100px; background-color:rgb(244, 244, 244);">
             <section class="container">
@@ -95,6 +107,7 @@
                 </div>
             </section>
         </div>
+        @endif
     @endif
 
     <div class="container" style="margin-top:100px;">
