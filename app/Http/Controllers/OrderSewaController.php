@@ -57,7 +57,7 @@ class OrderSewaController extends Controller
 
     public function post(Request $request)
     {
-        // Validate the request data
+        
         $validatedData = $request->validate([
             'id_customer' => 'required|integer|exists:users,id',
             'tgl_pesanan' => 'required|date',

@@ -17,7 +17,8 @@
             <div class="card-body row">
               <div class="col-md-12">
                 <div class="section-title">List Order</div>
-  
+                <input type="hidden" id="tgl_pesanan" value="{{ $data->tgl_pesanan}}">
+                <input type="hidden" id="tgl_kembali" value="{{ $data->tgl_kembali}}">
                 <div class="table-responsive">
                   <table class="table table-striped table-hover">
                     <tr>
@@ -39,6 +40,8 @@
                         <td>{{$item->product->nama_product}}</td>
                         <td class="text-center">{{$item->quantity}}</td>
                         <td class="text-center">
+                          
+
                           <input type="hidden" class="form-control" id="product_id" name="product[{{$no-1}}][id]" value="{{ $item->product->id }}">
                           <input type="number" class="form-control" id="jumlah" name="product[{{$no-1}}][jumlah]" required >
                         </td>
@@ -46,7 +49,7 @@
                           <input type="text" class="form-control harga_hilang" name="product[{{$no-1}}][harga_hilang]" value="@rupiah($data->harga_hilang)">
                         </td>
                         <td class="text-center">
-                          <input type="text" class="form-control harga_telat" name="product[{{$no-1}}][harga_telat]" value="@rupiah($data->harga_telat)" >
+                          <input type="text" class="form-control harga_telat" name="product[{{$no-1}}][harga_telat]" value="@rupiah($data->harga_telat)" readonly>
                         </td>
                         <td class="text-center">
                           <input type="text" class="form-control harga_rusak" name="product[{{$no-1}}][harga_rusak]" value="@rupiah($data->harga_rusak)" >
@@ -130,13 +133,34 @@ $(document).ready(function() {
 
     $('#sisa_bayar').val(formatRupiah(totalSisaBayar.toString(), 'Rp. '));
   }
+  function calculateLateFee() {
+    var tglKembali = new Date($('#tgl_kembali').val());
+    var today = new Date();
+    var lateDays = Math.floor((today - tglKembali) / (1000 * 60 * 60 * 24)); 
 
+    if (lateDays > 0) {
+      var lateFee = lateDays * 20000; 
+
+      $('.harga_telat').each(function() {
+        $(this).val(formatRupiah(lateFee.toString(), 'Rp. '));
+      });
+
+      
+      $('.total-price').text(formatRupiah(lateFee.toString(), 'Rp. '));
+      $('.total-price1').val(lateFee);
+      totalSisaBayar = 0;
+      totalSisaBayar += lateFee;
+      $('#sisa_bayar').val(formatRupiah(totalSisaBayar.toString(), 'Rp. '));
+    }
+  }
   $(document).on('input', '.harga_hilang, .harga_telat, .harga_rusak', function() {
     formatInputRupiah($(this));
     calculateTotalPrice();
+    
   });
 
-  calculateTotalPrice(); // Initial calculation on page load
+  calculateTotalPrice();
+  calculateLateFee()
 });
 </script>
 @endsection

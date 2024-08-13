@@ -4,6 +4,7 @@ use Illuminate\Support\Str;
 use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin2Controller;
 use App\Http\Controllers\KontenController;
@@ -43,7 +44,6 @@ use App\Http\Controllers\user\CustomerTransaksiController;
 */
 
 // User
-
 
 
 Route::get('/reset-password/admin', [ResetPasswordController::class, 'index'])->name('reset.index');
