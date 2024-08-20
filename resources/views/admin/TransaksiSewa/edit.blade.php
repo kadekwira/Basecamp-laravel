@@ -139,7 +139,7 @@ $(document).ready(function() {
     var lateDays = Math.floor((today - tglKembali) / (1000 * 60 * 60 * 24)); 
 
     if (lateDays > 0) {
-      var lateFee = lateDays * 20000; 
+      var lateFee = lateDays * 10000; 
 
       $('.harga_telat').each(function() {
         $(this).val(formatRupiah(lateFee.toString(), 'Rp. '));
